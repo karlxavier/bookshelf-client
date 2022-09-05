@@ -70,8 +70,8 @@ export default NextAuth({
     },
   },
   theme: {
-    colorScheme: 'auto', // "auto" | "dark" | "light"
-    brandColor: '', // Hex color code #33FF5D
-    logo: '/vercel.svg', // Absolute URL to image
+    colorScheme: 'auto',
+    brandColor: '',
+    logo: '/vercel.svg',
   },
 });
