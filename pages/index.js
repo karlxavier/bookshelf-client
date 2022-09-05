@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { useSession, signIn, signOut } from 'next-auth/react';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
 export default function Home() {
   const { data: session } = useSession();
