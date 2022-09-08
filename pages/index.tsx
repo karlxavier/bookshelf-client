@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
 export default function Home() {
-  const { data: session } = useSession();
+  const { data: accessToken } = useSession();
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -19,11 +19,11 @@ export default function Home() {
         <div className="mt-10">
           <button
             className={`mt-10 uppercase text-sm font-bold tracking-wide text-gray-100 p-3 rounded-lg  focus:outline-none focus:shadow-outline hover:shadow-xl active:scale-90 transition duration-150  ${
-              session?.user?.accessToken ? 'bg-red-400' : 'bg-green-400'
+              accessToken ? 'bg-red-400' : 'bg-green-400'
             }`}
-            onClick={() => (session?.user?.accessToken ? signOut() : signIn())}
+            onClick={() => (accessToken ? signOut() : signIn())}
           >
-            {session?.user?.accessToken ? 'Sign Out' : 'Sign In'}
+            {accessToken ? 'Sign Out' : 'Sign In'}
           </button>
         </div>
       </main>

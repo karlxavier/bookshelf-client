@@ -32,23 +32,53 @@ export default function Register() {
   }
 
   return (
-    <>
-      <h1>Register</h1>
+    <form onSubmit={registerUser}>
+      <div className="bg-red-400 flex flex-col items-center justify-center min-h-screen py-2 shadow-lg">
+        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <div className="mb-4">
+            <label className="uppercase text-sm text-gray-600 font-bold">
+              Name: 
+              <input
+                type='text'
+                value={name}
+                onChange={(e) => setName(e.target.value)} 
+                className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+              />
+            </label>
+          </div>
 
-      <form onSubmit={registerUser}>
-        <label>
-          Name: <input type='text' value={name} onChange={(e) => setName(e.target.value)} />
-        </label>
-        <label>
-          Email: <input type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
-        </label>
-        <label>
-          Password: <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <button type='submit'>Register User</button>
-
-        <Link href='/register'>Register</Link>
-      </form>
-    </>
+          <div className="mb-4">
+            <label className="uppercase text-sm text-gray-600 font-bold">
+              Email: 
+              <input
+                type='text'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} 
+                className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+              />
+            </label>
+          </div>
+          <div className="mb-4">
+            <label className="uppercase text-sm text-gray-600 font-bold">
+              Password: 
+              <input
+                type='password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)} 
+                className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+              />
+            </label>
+          </div>
+          <div className="mb-4 flex items-center justify-center">
+            <button
+              type='submit'
+              className="uppercase text-sm font-bold tracking-wide bg-green-400 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline hover:shadow-xl active:scale-90 transition duration-150"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
   )
 }

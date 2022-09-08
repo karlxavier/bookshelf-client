@@ -1,17 +1,20 @@
 import 'tailwindcss/tailwind.css';
 import { SessionProvider } from 'next-auth/react';
 import React from "react";
+import Wrapper from "./components/wrapper";
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+function ClientApp({ Component, pageProps: { session, ...pageProps } }) {
   const getLayout = Component.getLayout || ((page) => page)
 
   return (
     getLayout(
-      <SessionProvider session={session}>
-        <Component {...pageProps} />
+      <SessionProvider options={{clientMaxAge: 0}} session={pageProps.session}>
+        <Wrapper>
+          <Component {...pageProps} />
+        </Wrapper>
       </SessionProvider>
     )
   );
 }
 
-export default MyApp;
+export default ClientApp;

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styles from '../components/sidebar.module.css'
 
 export default function Sidebar() {
-  const { data: session } = useSession();
+  const { data: accessToken } = useSession();
 
   return (
     <nav className={styles.nav}>
@@ -19,11 +19,11 @@ export default function Sidebar() {
       </Link>
       <button
         className={`mt-10 uppercase text-sm font-bold tracking-wide text-gray-100 p-3 rounded-lg  focus:outline-none focus:shadow-outline hover:shadow-xl active:scale-90 transition duration-150  ${
-          session?.user?.accessToken ? 'bg-red-400' : 'bg-green-400'
+          accessToken ? 'bg-red-400' : 'bg-green-400'
         }`}
-        onClick={() => (session?.user?.accessToken ? signOut() : signIn())}
+        onClick={() => (accessToken ? signOut() : signIn())}
       >
-        {session?.user?.accessToken ? 'Sign Out' : 'Sign In'}
+        {accessToken ? 'Sign Out' : 'Sign In'}
       </button>
     </nav>
   )
