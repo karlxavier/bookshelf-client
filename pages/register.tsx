@@ -1,5 +1,5 @@
 import * as React from "react";
-import Link from "next/link";
+import { Button } from '@chakra-ui/button';
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -70,12 +70,12 @@ export default function Register() {
             </label>
           </div>
           <div className="mb-4 flex items-center justify-center">
-            <button
+            <Button
               type='submit'
               className="uppercase text-sm font-bold tracking-wide bg-green-400 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline hover:shadow-xl active:scale-90 transition duration-150"
             >
               Register
-            </button>
+            </Button>
           </div>
         </div>
       </div>

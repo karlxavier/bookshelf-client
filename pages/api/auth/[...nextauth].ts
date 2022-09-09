@@ -48,7 +48,7 @@ export default NextAuth({
     signIn: '/login',
   },
   callbacks: {
-    jwt({ token, user, account }) {
+    async jwt({ token, user, account }) {
       if (account && user) {
         return {
           ...token,
@@ -60,7 +60,7 @@ export default NextAuth({
       return token;
     },
 
-    session({ session, token }: any) {
+    async session({ session, token }: any) {
       session.user.accessToken = token.accessToken;
       session.user.refreshToken = token.refreshToken;
       session.user.accessTokenExpires = token.accessTokenExpires;

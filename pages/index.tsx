@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { Button } from '@chakra-ui/button';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
 export default function Home() {
@@ -17,14 +18,14 @@ export default function Home() {
         </h1>
 
         <div className="mt-10">
-          <button
+          <Button
             className={`mt-10 uppercase text-sm font-bold tracking-wide text-gray-100 p-3 rounded-lg  focus:outline-none focus:shadow-outline hover:shadow-xl active:scale-90 transition duration-150  ${
               accessToken ? 'bg-red-400' : 'bg-green-400'
             }`}
             onClick={() => (accessToken ? signOut() : signIn())}
           >
             {accessToken ? 'Sign Out' : 'Sign In'}
-          </button>
+          </Button>
         </div>
       </main>
     </div>

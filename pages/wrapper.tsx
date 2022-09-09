@@ -8,8 +8,7 @@ export default function Wrapper(props: any)
   const router = useRouter();
 
   if ((session !== null && session?.status === "authenticated") ||
-    (router.pathname === "/" || router.pathname === '/register') ||
-    router.pathname === '/login')
+    (router.pathname === "/" || router.pathname === '/register' || router.pathname === '/login'))
   {
     return (
       props.children

@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.tsx", pages/index.js, "pages/discover.jsx", "pages/book/[id].js", "papages/middleware.tsx "pages/api/auth/[...nextauth2].ts",, "pages/components/sidebar.js" "pages/components/wrapper.js"],
+  "include": ["next-env.d.ts", "types/**/*.ts", "**/*.ts", "**/*.tsx", "pages/_app.tsx", "pages/index.tsx", "pages/discover.jsx", "pages/book/[id].js", "pages/middleware.js", "pages/api/auth/[...nextauth2].ts", "pages/components/wrapper.js"],
   "exclude": ["node_modules"]
 }
