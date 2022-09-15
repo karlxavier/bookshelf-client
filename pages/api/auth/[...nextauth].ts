@@ -17,8 +17,8 @@ export default NextAuth({
       async authorize(credentials: any) {
         const payload = {
           auth: {
-            email: credentials.email,
-            password: credentials.password,
+            email: credentials?.email,
+            password: credentials?.password,
           }
         };
         const res = await fetch(process.env.API_URI + '/v1/user_token', {

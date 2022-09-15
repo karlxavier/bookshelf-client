@@ -13,8 +13,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "baseUrl": "."
   },
-  "include": ["next-env.d.ts", "types/**/*.ts", "**/*.ts", "**/*.tsx", "pages/_app.tsx", "pages/index.tsx", "pages/discover.jsx", "pages/book/[id].js", "pages/middleware.js", "pages/api/auth/[...nextauth2].ts", "pages/components/wrapper.js"],
+  "include": [".", "next-env.d.ts", "types/**/*.ts", "**/*.ts", "**/*.tsx", "pages/_app.tsx", "pages/index.tsx", "pages/discover.jsx", "pages/book/[id].js", "pages/middleware.js", "pages/api/auth/[...nextauth2].ts", "pages/components/wrapper.js"],
   "exclude": ["node_modules"]
 }

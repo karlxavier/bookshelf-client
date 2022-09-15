@@ -16,21 +16,21 @@ export default function Home() {
 
     signIn("credentials", {
       email, password, callbackUrl: `${window.location.origin}/discover`, redirect: false }
-    ).then(function(result: any){
-      if (result.error !== null)
+    ).then(function(response: any){
+      if (response.ok)
       {
-        if (result.status === 401)
+        router.push(response.url);
+      }
+      else
+      {
+        if (response.status === 401)
         {
           setLoginError("Your username/password combination was incorrect. Please try again");
         }
         else
         {
-          setLoginError(result.error);
+          setLoginError(response.error);
         }
-      }
-      else
-      {
-        router.push(result.url);
       }
     });
   }

@@ -7,7 +7,6 @@ import * as Api from '../../../api/requests'
 export const Book: FC<BookProps> = (props) => {
   const [loading, setLoading] = useState(false);
   const { data: session } = useSession();
-
   const handleAddToList = (bookId: number) => {
     setLoading(true);
     const userSession = JSON.stringify(session?.user);

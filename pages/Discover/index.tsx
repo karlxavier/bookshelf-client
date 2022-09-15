@@ -6,6 +6,7 @@ import * as Api from '../api/requests'
 export const Discover = () => {
   const [books, setBooks] = useState<any>([]);
   const { data: session } = useSession();
+
   const loadData = () => {
     const userSession = JSON.stringify(session?.user);
     const token = JSON.parse(userSession)?.accessToken
