@@ -7,5 +7,6 @@ export interface BooksProps {
       author: string
       image: string
     }]
-  }
+  };
+  handleClick: (bookId: null | any) => void;
 }

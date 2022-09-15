@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Books } from '../components/Books'
-import { useSession } from "next-auth/react"
-import * as Api from '../api/requests'
+import { Books } from 'components/Books'
+import * as Api from 'services/api'
 
 export const Discover = () => {
   const [books, setBooks] = useState<any>([]);
-  const { data: session } = useSession();
 
   const loadData = () => {
-    const userSession = JSON.stringify(session?.user);
-    const token = JSON.parse(userSession)?.accessToken
-
-    Api.getAvailableBooks(token).then((response) => {
+    Api.getAvailableBooks().then((response) => {
       const data = response.data;
       setBooks(data);
+    });
+  }
+
+  function addToReadingBooks(bookId: number) {
+    Api.AddToReadingList(bookId).then((response) => {
+      
     });
   }
 
@@ -25,7 +26,7 @@ export const Discover = () => {
     return (
       <>
         {
-          <Books books={books} />
+          <Books books={books} handleClick={addToReadingBooks.bind(this)} />
         }
       </>
     )

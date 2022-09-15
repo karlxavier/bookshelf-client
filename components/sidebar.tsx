@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/button';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import Link from 'next/link'
-import styles from '../styles/sidebar.module.css'
+import styles from 'styles/sidebar.module.css'
 
 export default function Sidebar() {
   const { data: accessToken } = useSession();

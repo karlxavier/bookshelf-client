@@ -3,7 +3,8 @@ import { Button } from '@chakra-ui/button';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
 export default function Home() {
-  const { data: accessToken } = useSession();
+  const { data: session } = useSession();
+  const userSession = JSON.stringify(session?.user);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -20,11 +21,11 @@ export default function Home() {
         <div className="mt-10">
           <Button
             className={`mt-10 uppercase text-sm font-bold tracking-wide text-gray-100 p-3 rounded-lg  focus:outline-none focus:shadow-outline hover:shadow-xl active:scale-90 transition duration-150  ${
-              accessToken ? 'bg-red-400' : 'bg-green-400'
+              userSession ? 'bg-red-400' : 'bg-green-400'
             }`}
-            onClick={() => (accessToken ? signOut() : signIn())}
+            onClick={() => (userSession ? signOut() : signIn())}
           >
-            {accessToken ? 'Sign Out' : 'Sign In'}
+            {userSession ? 'Sign Out' : 'Sign In'}
           </Button>
         </div>
       </main>

@@ -1,9 +1,9 @@
-import Layout from '../../layout'
+import Layout from '../layout'
 import React, { FC } from "react";
 import { BooksProps } from "./props";
-import { Book } from "../Books/Book"
+import { Book } from "./Book"
 
-export const Books: FC<BooksProps> = ({books}) => {
+export const Books: FC<BooksProps> = ({books, handleClick}) => {
   const records = JSON.parse(
     JSON.stringify(books)
   )
@@ -19,7 +19,9 @@ export const Books: FC<BooksProps> = ({books}) => {
                 title={book.title}
                 description={book.description}
                 author={book.author}
-                image={book.image} />;
+                image={book.image} 
+                handleClick={handleClick}
+              />;
             })
           }
         </section>

@@ -4,4 +4,5 @@ export interface BookProps {
   description: string;
   author: string;
   image: string;
+  handleClick: (bookId: null | any) => void;
 }
