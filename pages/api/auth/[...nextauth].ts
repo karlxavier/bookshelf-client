@@ -6,20 +6,19 @@ export default NextAuth({
     CredentialsProvider({
       id: 'credentials',
       name: 'Bookshelf',
-      debug: process.env.NODE_ENV === 'development',
       credentials: {
         email: {
           label: 'email',
           type: 'email',
-          placeholder: 'karl@example.com',
+          placeholder: 'your@email.com',
         },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials) {
+      async authorize(credentials: any) {
         const payload = {
           auth: {
-            email: credentials.email,
-            password: credentials.password,
+            email: credentials?.email,
+            password: credentials?.password,
           }
         };
         const res = await fetch(process.env.API_URI + '/v1/user_token', {
@@ -40,7 +39,7 @@ export default NextAuth({
           return user;
         }
 
-        return null;
+        return false;
       },
     }),
   ],
@@ -49,7 +48,7 @@ export default NextAuth({
     signIn: '/login',
   },
   callbacks: {
-    jwt({ token, user, account }) {
+    async jwt({ token, user, account }) {
       if (account && user) {
         return {
           ...token,
@@ -61,17 +60,12 @@ export default NextAuth({
       return token;
     },
 
-    session({ session, token }) {
+    async session({ session, token }: any) {
       session.user.accessToken = token.accessToken;
       session.user.refreshToken = token.refreshToken;
       session.user.accessTokenExpires = token.accessTokenExpires;
 
       return session;
     },
-  },
-  theme: {
-    colorScheme: 'auto',
-    brandColor: '',
-    logo: '/vercel.svg',
   },
 });

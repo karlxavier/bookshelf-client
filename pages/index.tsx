@@ -1,9 +1,10 @@
 import Head from 'next/head';
+import { Button } from '@chakra-ui/button';
 import { useSession, signIn, signOut } from 'next-auth/react';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
 export default function Home() {
   const { data: session } = useSession();
+  const userSession = JSON.stringify(session?.user);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -18,14 +19,14 @@ export default function Home() {
         </h1>
 
         <div className="mt-10">
-          <button
+          <Button
             className={`mt-10 uppercase text-sm font-bold tracking-wide text-gray-100 p-3 rounded-lg  focus:outline-none focus:shadow-outline hover:shadow-xl active:scale-90 transition duration-150  ${
-              session?.user?.accessToken ? 'bg-red-400' : 'bg-green-400'
+              userSession ? 'bg-red-400' : 'bg-green-400'
             }`}
-            onClick={() => (session?.user?.accessToken ? signOut() : signIn())}
+            onClick={() => (userSession ? signOut() : signIn())}
           >
-            {session?.user?.accessToken ? 'Sign Out' : 'Sign In'}
-          </button>
+            {userSession ? 'Sign Out' : 'Sign In'}
+          </Button>
         </div>
       </main>
     </div>
