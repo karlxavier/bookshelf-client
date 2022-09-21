@@ -1,24 +1,9 @@
 import Layout from '../layout'
 import React, { FC } from "react";
 import { Book } from "./Book"
+import { IBooks } from './props'
 
-interface Books {
-  books: {
-    data: [{
-      bookId: number
-      title: string
-      description: string
-      author: string
-      image: string
-    }]
-  };
-  handleBookClick: (
-    bookId: number,
-    onComplete: () => void
-  ) => void;
-}
-
-export const Books: FC<Books> = ({books, handleBookClick}) => {
+export const Books: FC<IBooks> = ({books, handleBookClick}) => {
   const records = JSON.parse(
     JSON.stringify(books)
   )

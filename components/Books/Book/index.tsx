@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/button";
 import React, { FC, useState } from "react";
-import { IBook } from './props';
+import { IBook } from '../props';
 
 export const Book: FC<IBook> = (props) => {
   const [loading, setLoading] = useState(false);

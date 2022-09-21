@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Books } from 'components/Books'
 import * as Api from 'services/api'
-import { IBook } from 'components/Books/Book/props'
+import { IBook, IBooks } from 'components/Books/props'
 
 export const Discover = () => {
-  const [books, setBooks] = useState<any>([]);
+  const [books, setBooks] = useState<IBooks[]>([]);
 
   const loadData = () => {
     Api.getAvailableBooks().then((response) => {
