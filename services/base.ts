@@ -12,7 +12,7 @@ const fetchApi = async(url: string, method: string, payload: any = null) => {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
     },
-    body: payload
+    body: JSON.stringify(payload)
   }
   const reqUrl = `${BASE_URL}${url}`
   const response = await fetch(reqUrl, options)

@@ -2,7 +2,7 @@ import * as React from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
-export default function Wrapper(props: any)
+const Wrapper = (props: { children: React.ReactNode}) =>
 {
   const session = useSession();
   const router = useRouter();
@@ -16,14 +16,14 @@ export default function Wrapper(props: any)
   }
   else {
     return (
-      <div className="bg-red-400 flex flex-col items-center justify-center min-h-screen py-2 shadow-lg">
+      <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-red-400 shadow-lg">
         <h1 className="text-2xl font-bold">
           You are not authenticated
         </h1>
-        <div className="mb-4 flex items-center justify-center">
+        <div className="flex items-center justify-center mb-4">
           <a
             href='/login'
-            className="uppercase text-sm text-center font-bold tracking-wide text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline hover:shadow-xl active:scale-90 transition duration-150"
+            className="w-full p-3 text-sm font-bold tracking-wide text-center text-gray-100 uppercase transition duration-150 rounded-lg focus:outline-none focus:shadow-outline hover:shadow-xl active:scale-90"
           >
             Back to Login
           </a>
@@ -32,3 +32,5 @@ export default function Wrapper(props: any)
     )
   }
 }
+
+export default Wrapper

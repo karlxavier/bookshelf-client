@@ -1,39 +1,47 @@
 import { Button } from "@chakra-ui/button";
 import React, { FC, useState } from "react";
-import { IBook } from '../props';
+import { Book as BookType} from "services/books";
 
-export const Book: FC<IBook> = (props) => {
+interface BookProps {
+  book: BookType
+  handleBookClick: (
+    bookId: string,
+    onComplete: () => void
+  ) => void;
+}
+
+export const Book: FC<BookProps> = ({ book, handleBookClick}) => {
   const [loading, setLoading] = useState(false);
   const [hidden, setHide] = useState(false);
 
   const handleBookEvent = async (
       e: React.SyntheticEvent<EventTarget>,
-      bookId: number
+      bookId: string
     ) => {
       e.stopPropagation();
       const onComplete = () => {
         setLoading(false);
         setHide(true);
       };
-      props.handleBookClick(bookId, onComplete);
+      handleBookClick(bookId, onComplete);
   };
 
-  if (props) {
+  if (book) {
     return(
-      <div key={props.bookId} className={`max-w-sm rounded overflow-hidden shadow-lg ${hidden ? 'hidden' : ''}`}>
-        <img className="w-full" src={props.image} alt="Sunset in the mountains"></img>
+      <div key={book.bookId} className={`max-w-sm rounded overflow-hidden shadow-lg ${hidden ? 'hidden' : ''}`}>
+        <img className="w-full" src={book.image} alt="Sunset in the mountains"></img>
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">{props.title}</div>
-          <div className="font-italic text-x mb-2">{props.author}</div>
-          <p className="text-gray-700 text-base">
-            {props.description}
+          <div className="mb-2 text-xl font-bold">{book.title}</div>
+          <div className="mb-2 font-italic text-x">{book.author}</div>
+          <p className="text-base text-gray-700">
+            {book.description}
           </p>
         </div>
         <div className="px-6 pt-4 pb-2">
-          <Button 
-            onClick={(e) => handleBookEvent(e, props.bookId)}
+          <Button
+            onClick={(e) => handleBookEvent(e, book.bookId)}
             disabled={loading}
-            className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            className="px-4 py-2 font-semibold text-gray-800 bg-white border border-gray-400 rounded shadow hover:bg-gray-100"
           >
             Add to List
           </Button>
@@ -43,7 +51,7 @@ export const Book: FC<IBook> = (props) => {
   } else {
     return null
   }
-  
+
 }
 
 export default Book;
