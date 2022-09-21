@@ -1,7 +1,7 @@
 import Layout from '../layout'
 import React, { FC } from "react";
 import { Book } from "./Book"
-import { IBooks } from './props'
+import { IBooks, IBook } from './props'
 
 export const Books: FC<IBooks> = ({books, handleBookClick}) => {
   const records = JSON.parse(
@@ -13,9 +13,9 @@ export const Books: FC<IBooks> = ({books, handleBookClick}) => {
       <Layout>
         <section>
           {
-            records.map((book: any) => {
-              return <Book key={book.id}
-                bookId={book.id}
+            records.map((book: IBook) => {
+              return <Book key={book.bookId}
+                bookId={book.bookId}
                 title={book.title}
                 description={book.description}
                 author={book.author}
