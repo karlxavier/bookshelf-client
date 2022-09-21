@@ -1,8 +1,8 @@
-export interface BookProps {
+export interface IBook {
   bookId: number;
   title: string;
   description: string;
   author: string;
   image: string;
-  handleClick: (bookId: null | any) => void;
+  handleBookClick: (bookId: number, onComplete: () => void) => void;
 }

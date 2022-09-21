@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Books } from 'components/Books'
 import * as Api from 'services/api'
+import { IBook } from 'components/Books/Book/props'
 
 export const Discover = () => {
   const [books, setBooks] = useState<any>([]);
@@ -12,9 +13,12 @@ export const Discover = () => {
     });
   }
 
-  function addToReadingBooks(bookId: number) {
+  const addToReadingBooks = async (bookId: number, onComplete: (response: IBook) => void) => {
     Api.AddToReadingList(bookId).then((response) => {
-      
+      if (response.ok) {
+        onComplete && onComplete(response);
+      }
+      return response.json();
     });
   }
 
@@ -26,7 +30,7 @@ export const Discover = () => {
     return (
       <>
         {
-          <Books books={books} handleClick={addToReadingBooks.bind(this)} />
+          <Books books={books} handleBookClick={addToReadingBooks} />
         }
       </>
     )

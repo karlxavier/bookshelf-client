@@ -1,7 +1,7 @@
 const API_ENDPOINT = 'http://localhost:3001'
 import { getSession } from 'next-auth/react'
 
-async function fetchApi(url: string, method: string, { variables }: Record<string, any> = {}) {
+const fetchApi = async(url: string, method: string, { variables }: Record<string, any> = {}) => {
   const session = await getSession()
   const userSession = JSON.stringify(session?.user);
   const accessToken = JSON.parse(userSession)?.accessToken

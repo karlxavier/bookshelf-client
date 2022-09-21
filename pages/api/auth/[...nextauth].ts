@@ -10,7 +10,7 @@ export default NextAuth({
         email: {
           label: 'email',
           type: 'email',
-          placeholder: 'karl@example.com',
+          placeholder: 'your@email.com',
         },
         password: { label: 'Password', type: 'password' },
       },
@@ -67,10 +67,5 @@ export default NextAuth({
 
       return session;
     },
-  },
-  theme: {
-    colorScheme: 'auto',
-    brandColor: '',
-    logo: '/vercel.svg',
   },
 });

@@ -1,16 +1,21 @@
 import { Button } from "@chakra-ui/button";
 import React, { FC, useState } from "react";
-import { BookProps } from './props'
+import { IBook } from './props';
 
-export const Book: FC<BookProps> = (props) => {
+export const Book: FC<IBook> = (props) => {
   const [loading, setLoading] = useState(false);
   const [hidden, setHide] = useState(false);
 
-  const handleBookEvent = (bookId: number) => {
-    setLoading(true);
-    props.handleClick(bookId);
-    setHide(true);
-    setLoading(false);
+  const handleBookEvent = async (
+      e: React.SyntheticEvent<EventTarget>,
+      bookId: number
+    ) => {
+      e.stopPropagation();
+      const onComplete = () => {
+        setLoading(false);
+        setHide(true);
+      };
+      props.handleBookClick(bookId, onComplete);
   };
 
   if (props) {
@@ -26,7 +31,7 @@ export const Book: FC<BookProps> = (props) => {
         </div>
         <div className="px-6 pt-4 pb-2">
           <Button 
-            onClick={(e) => handleBookEvent(props.bookId)}
+            onClick={(e) => handleBookEvent(e, props.bookId)}
             disabled={loading}
             className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
           >
