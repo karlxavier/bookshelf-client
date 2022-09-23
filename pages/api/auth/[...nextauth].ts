@@ -14,7 +14,7 @@ export default NextAuth({
         },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials: any) {
+      async authorize(credentials: Record<"email" | "password", string> | undefined) {
         const payload = {
           auth: {
             email: credentials?.email,
@@ -38,8 +38,6 @@ export default NextAuth({
         if (res.ok && user) {
           return user;
         }
-
-        return false;
       },
     }),
   ],
