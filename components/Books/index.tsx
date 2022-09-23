@@ -1,12 +1,12 @@
 import Layout from '../layout'
 import React, { FC } from "react";
 import { Book } from "./Book"
-import { Book as BookType} from "services/books";
+import { BookProps as BookType} from "services/books";
 
 interface BooksProps {
   books: BookType[]
   handleBookClick: (
-    bookId: string,
+    id: string,
     onComplete: () => void
   ) => void;
 }
@@ -18,7 +18,7 @@ export const Books: FC<BooksProps> = ({books, handleBookClick}) => {
         <section>
           {
             books.map((book) => {
-              return <Book key={book.bookId}
+              return <Book key={book.id}
                 book={book}
                 handleBookClick={handleBookClick}
               />;

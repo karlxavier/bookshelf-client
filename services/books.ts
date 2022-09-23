@@ -1,7 +1,7 @@
 import { fetchApi } from "./base";
 
-export type Book = {
-  bookId: string
+export type BookProps = {
+  id: string
   title: string
   description: string
   author: string
@@ -11,41 +11,39 @@ export type Book = {
 export const getAvailableBooks = async () => {
   const url = '/v1/books/discover'
   const response = await fetchApi(url, 'GET')
-  return JSON.parse(response) as { data: Book[] }
+  return response as { data: BookProps[] }
 }
 
 export const getFinishedBooks = async () => {
   const url = '/v1/books/finished_books'
   const response = await fetchApi(url, 'GET')
-  return response as { data: Book[] }
+  return response as { data: BookProps[] }
 }
 
 export const getReadingList = async () => {
-  const url = '/v1/books/reading_list'
+  const url = '/v1/books/reading_lists'
   const response = await fetchApi(url, 'GET')
   return response
 }
 
-export const AddToReadingList = async (bookId: string) => {
+export const AddToReadingList = async (id: string) => {
   const payload = {
-    id: bookId
+    id: id
   }
   const url = '/v1/books/add_reading_list'
 
   const response = await fetchApi(
     url,
     'POST',
-    {
-      variables: payload,
-    }
+    payload
   )
 
   return response
 }
 
-export const MarkAsUnread = async (bookId: number) => {
+export const MarkAsUnread = async (id: string) => {
   const payload = {
-    id: bookId
+    id: id
   }
   const url = '/v1/books/mark_as_unread'
 
@@ -60,9 +58,9 @@ export const MarkAsUnread = async (bookId: number) => {
   return response
 }
 
-export const MarkAsRead = async (bookId: number) => {
+export const MarkAsRead = async (id: string) => {
   const payload = {
-    id: bookId
+    id: id
   }
   const url = '/v1/books/mark_as_read'
 

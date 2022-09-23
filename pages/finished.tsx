@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Books } from 'components/Books'
 import * as Api from 'services/books'
-import { IBook } from 'components/Books/props'
+import { BookProps } from "services/books";
 
 export const Finished = () => {
-  const [books, setBooks] = useState<IBook[]>([]);
+  const [books, setBooks] = useState<BookProps[]>([]);
 
   const loadData = () => {
     Api.getFinishedBooks().then((response) => {
@@ -13,12 +13,12 @@ export const Finished = () => {
     });
   }
 
-  const markAsUnreadBook = (bookId: number, onComplete: (response: IBook) => void) => {
-    Api.MarkAsUnread(bookId).then((response) => {
+  const markAsUnreadBook = (id: string, onComplete: (response: BookProps) => void) => {
+    Api.MarkAsUnread(id).then((response) => {
       if (response.ok) {
         onComplete && onComplete(response);
       }
-      return response.json();
+      return response;
     });
   }
 
