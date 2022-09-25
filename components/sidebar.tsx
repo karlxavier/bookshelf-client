@@ -8,35 +8,54 @@ export default function Sidebar() {
   const { data: accessToken } = useSession();
   const router = useRouter();
 
-  return (
-    <nav className={styles.nav}>
-      <input className={styles.input} placeholder="Search..." />
-      <Link href="/list">
-        <a className={router.pathname == "/list" ? "!border-b-red-400" : ""}>
-          Reading List
-        </a>
-      </Link>
+  const menuItems = [
+    {
+      href: '/list',
+      title: 'Reading List',
+    },
+    {
+      href: '/finished',
+      title: 'Finished Books',
+    },
+    {
+      href: '/discover',
+      title: 'Discover',
+    },
+  ];
 
-      <Link href="/finished">
-        <a className={router.pathname == "/finished" ? "!border-b-red-400" : ""}>
-          Finished Books
-        </a>
-      </Link>
+  if (accessToken){
+    return (
+      <aside className='h-screen sticky top-0 bg-gray-100 w-full md:w-60'>
+        <nav>
+          <ul>
+            {menuItems.map(({ href, title }) => (
+              <li className='m-2' key={title}>
+                <Link href={href}>
+                  <a
+                    className={`flex p-2 bg-gray-200 rounded hover:bg-gray-400 cursor-pointer ${
+                      router.asPath === href && 'bg-gray-600 text-white'
+                    }`}
+                  >
+                    {title}
+                  </a>
+                </Link>
+              </li>
+            ))}
 
-      <Link href="/discover">
-        <a className={router.pathname == "/discover" ? "!border-b-red-400" : ""}>
-          Discover
-        </a>
-      </Link>
-
-      <Button
-        className={`mt-10 uppercase text-sm font-bold tracking-wide text-gray-100 p-3 rounded-lg  focus:outline-none focus:shadow-outline hover:shadow-xl active:scale-90 transition duration-150  ${
-          accessToken ? 'bg-red-400' : 'bg-green-400'
-        }`}
-        onClick={() => (accessToken ? signOut() : signIn())}
-      >
-        {accessToken ? 'Sign Out' : 'Sign In'}
-      </Button>
-    </nav>
-  )
+            <li className='m-2 absolute inset-x-0 bottom-6'>
+              <a
+                onClick={() => (accessToken ? signOut() : signIn())} 
+                href="#" 
+                className="flex p-2 bg-gray-200 rounded hover:bg-red-400 hover:text-white cursor-pointer"
+                >
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    )
+  } else {
+    return null
+  }
 }

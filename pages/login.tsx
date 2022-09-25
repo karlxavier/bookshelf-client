@@ -36,8 +36,9 @@ export default function Home() {
 
   return (
     <form onSubmit={handleLogin}>
-      <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-red-400 shadow-lg">
+      <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-white-400 shadow-lg">
         <div className="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
+        <p className="text-center text-lg mb-0 mr-4 font-bold">Bookshelf</p>
           <div className="p-2 text-center text-red-400 rounded text-md">
             {loginError}
           </div>

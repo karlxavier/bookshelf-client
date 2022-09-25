@@ -26,17 +26,16 @@ export const List = () => {
     loadData();
   }, []);
 
-  if (books.length > 0) {
-    return (
-      <>
+  return (
+    <div className="container my-24 px-6 mx-auto">
+      <section className="mb-32 text-gray-800 text-center md:text-left">
+        <h2 className="text-3xl font-bold mb-12 text-center">Reading Lists</h2>
         {
           <Books books={books} buttonLabel='Mark as Read' handleBookClick={markAsReadBook} />
         }
-      </>
-    )
-  } else {
-    return null
-  }
+      </section>
+    </div>
+  )
   
 }
 

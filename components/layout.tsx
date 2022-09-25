@@ -1,20 +1,13 @@
-import Head from 'next/head'
-import Sidebar from './sidebar'
+import Sidebar from "./sidebar";
 
 export default function Layout({ children }: any) {
+
   return (
-    <>
-      <Head>
-        <title>Bookshelf</title>
-      </Head>
-      <main className='max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-4xl'>
-        <div className="grid gap-2 grid-cols-2">
-          <div className='sticky top-0 bottom-0'>
-            <Sidebar />
-          </div>
-          {children}
-        </div>
-      </main>
-    </>
-  )
+    <div className='min-h-screen flex flex-col'>
+      <div className='flex flex-col md:flex-row flex-1'>
+        <Sidebar />
+        <main className='flex-1'>{children}</main>
+      </div>
+    </div>
+  );
 }
