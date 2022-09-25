@@ -30,7 +30,7 @@ export const List = () => {
     return (
       <>
         {
-          <Books books={books} handleBookClick={markAsReadBook} />
+          <Books books={books} buttonLabel='Mark as Read' handleBookClick={markAsReadBook} />
         }
       </>
     )

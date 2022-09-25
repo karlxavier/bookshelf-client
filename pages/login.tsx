@@ -10,14 +10,14 @@ export default function Home() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
-  const handleLogin = async () => {
-    // event.preventDefault();
-    // event.stopPropagation();
+  const handleLogin = async (event: { preventDefault: () => void; stopPropagation: () => void; }) => {
+    event.preventDefault();
+    event.stopPropagation();
 
     const response = await signIn("credentials", {
       email, password, callbackUrl: `${window.location.origin}/discover`, redirect: false }
     )
-
+    console.log(response);
     if (!response) {
       return setLoginError("Your username/password combination was incorrect. Please try again");
     }

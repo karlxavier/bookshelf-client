@@ -16,8 +16,7 @@ const fetchApi = async(url: string, method: string, payload: any = null) => {
   if (payload) {
     Object.assign(options, { body: JSON.stringify(payload) });
   }
-  
-  console.log(options);
+
   const reqUrl = `${BASE_URL}${url}`;
   const response = await fetch(reqUrl, options);
   const result = await response.json();

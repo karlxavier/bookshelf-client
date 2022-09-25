@@ -26,6 +26,12 @@ export const getReadingList = async () => {
   return response
 }
 
+export const searchBooks = async () => {
+  const url = '/v1/books/search'
+  const response = await fetchApi(url, 'GET')
+  return response
+}
+
 export const AddToReadingList = async (id: string) => {
   const payload = {
     id: id
