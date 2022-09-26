@@ -74,14 +74,6 @@ const Login = () => {
               Login
             </Button>
           </div>
-          <div className="flex items-center justify-center mb-4">
-            <a
-              href='/register'
-              className="w-full p-3 text-sm font-bold tracking-wide text-center text-gray-100 uppercase transition duration-150 bg-green-400 rounded-lg focus:outline-none focus:shadow-outline hover:shadow-xl active:scale-90"
-            >
-              Register
-            </a>
-          </div>
         </div>
       </div>
     </form>
