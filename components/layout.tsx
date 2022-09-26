@@ -1,6 +1,6 @@
 import Sidebar from "./sidebar";
 
-export default function Layout({ children }: any) {
+const Layout = ({ children }: any) => {
 
   return (
     <div className='min-h-screen flex flex-col'>
@@ -11,3 +11,5 @@ export default function Layout({ children }: any) {
     </div>
   );
 }
+
+export default Layout

@@ -6,6 +6,7 @@ export type BookProps = {
   description: string
   author: string
   image: string
+  created_at: string
 }
 
 export const getAvailableBooks = async () => {
@@ -51,7 +52,7 @@ export const MarkAsUnread = async (id: string) => {
   const payload = {
     id: id
   }
-  const url = '/v1/books/mark_as_unread'
+  const url = `/v1/books/${id}/mark_as_unread`
 
   const response = await fetchApi(
     url,
@@ -68,7 +69,24 @@ export const MarkAsRead = async (id: string) => {
   const payload = {
     id: id
   }
-  const url = '/v1/books/mark_as_read'
+  const url = `/v1/books/${id}/mark_as_read`
+
+  const response = await fetchApi(
+    url,
+    'POST',
+    {
+      variables: payload,
+    }
+  )
+
+  return response
+}
+
+export const RemoveFromList = async (id: string) => {
+  const payload = {
+    id: id
+  }
+  const url = `/v1/books/${id}/remove_from_list`
 
   const response = await fetchApi(
     url,

@@ -4,7 +4,7 @@ import {useState} from "react";
 import {useRouter} from "next/router";
 import {signIn} from "next-auth/react";
 
-export default function Home() {
+const Login = () => {
 
   const router = useRouter();
   const [email, setEmail] = useState('');
@@ -17,13 +17,13 @@ export default function Home() {
     const response = await signIn("credentials", {
       email, password, callbackUrl: `${window.location.origin}/discover`, redirect: false }
     )
-    console.log(response);
+
     if (!response) {
       return setLoginError("Your username/password combination was incorrect. Please try again");
     }
 
     if (response.ok && response.url) {
-      return router.push(response.url);
+      return router.push('/discover');
     }
 
     if (response.status === 401)
@@ -38,7 +38,8 @@ export default function Home() {
     <form onSubmit={handleLogin}>
       <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-white-400 shadow-lg">
         <div className="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
-        <p className="text-center text-lg mb-0 mr-4 font-bold">Bookshelf</p>
+          <p className="text-center text-lg mb-0 mr-4 font-bold">Bookshelf</p>
+
           <div className="p-2 text-center text-red-400 rounded text-md">
             {loginError}
           </div>
@@ -86,3 +87,5 @@ export default function Home() {
     </form>
   )
 }
+
+export default Login

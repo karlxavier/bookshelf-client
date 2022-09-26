@@ -5,7 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 
-export default function Register() {
+const Register = () => {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -33,7 +33,7 @@ export default function Register() {
 
   return (
     <form onSubmit={registerUser}>
-      <div className="bg-red-400 flex flex-col items-center justify-center min-h-screen py-2 shadow-lg">
+      <div className="bg-white flex flex-col items-center justify-center min-h-screen py-2 shadow-lg">
         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
             <label className="uppercase text-sm text-gray-600 font-bold">
@@ -82,3 +82,5 @@ export default function Register() {
     </form>
   )
 }
+
+export default Register

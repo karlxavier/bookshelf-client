@@ -4,6 +4,7 @@ export interface IBook {
   description: string;
   author: string;
   image: string;
+  created_at: string
   handleBookClick: (
     bookId: number,
     onComplete: () => void

@@ -31,12 +31,15 @@ export const List = () => {
       <section className="mb-32 text-gray-800 text-center md:text-left">
         <h2 className="text-3xl font-bold mb-12 text-center">Reading Lists</h2>
         {
-          <Books books={books} buttonLabel='Mark as Read' handleBookClick={markAsReadBook} />
+          <Books 
+            books={books} 
+            buttonLabel='Mark as Read' 
+            handleBookClick={markAsReadBook}
+          />
         }
       </section>
     </div>
   )
-  
 }
 
 export default List

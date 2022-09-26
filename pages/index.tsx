@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { Button } from '@chakra-ui/button';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
-export default function Home() {
+const Home = () => {
   const { data: session } = useSession();
   const userSession = JSON.stringify(session?.user);
 
@@ -32,3 +32,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home

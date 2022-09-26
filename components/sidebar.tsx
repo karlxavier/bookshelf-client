@@ -1,13 +1,10 @@
-import { Button } from '@chakra-ui/button';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import Link from 'next/link'
 import { useRouter } from "next/router";
-import styles from 'styles/sidebar.module.css'
 
-export default function Sidebar() {
+const Sidebar = () => {
   const { data: accessToken } = useSession();
   const router = useRouter();
-
   const menuItems = [
     {
       href: '/list',
@@ -28,6 +25,9 @@ export default function Sidebar() {
       <aside className='h-screen sticky top-0 bg-gray-100 w-full md:w-60'>
         <nav>
           <ul>
+          <li className='m-2'>
+            
+          </li>
             {menuItems.map(({ href, title }) => (
               <li className='m-2' key={title}>
                 <Link href={href}>
@@ -59,3 +59,5 @@ export default function Sidebar() {
     return null
   }
 }
+
+export default Sidebar
