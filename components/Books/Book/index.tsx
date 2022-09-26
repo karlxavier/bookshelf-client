@@ -66,25 +66,25 @@ export const Book: FC<BookProps> = ({ book, buttonLabel, handleBookClick}) => {
             <small>Published <u>{book.created_at}</u> by 
               <strong className="text-gray-900"> {book.author}</strong></small>
           </p>
-          <p className="text-gray-500">
-            {book.description}
-          </p>
-          <div className="absolute inset-x-0 bottom-6">
+          <div className="my-5 inset-x-0 bottom-6">
             <button type="button" 
-              className="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+              className="px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
               onClick={(e) => handleBookEvent(e, book)}
               disabled={loading}
               >
               {buttonLabel}
             </button>
             <button type="button" 
-              className={`${withRemoveList ? '' : 'hidden'} inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out`}
+              className={`${withRemoveList ? '' : 'hidden'} px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out`}
               onClick={(e) => removeFromList(e, book)}
               disabled={loading}
               >
               Remove from List
             </button>
           </div>
+          <p className="text-gray-500">
+            {book.description}
+          </p>
         </div>
       </div>
     )
